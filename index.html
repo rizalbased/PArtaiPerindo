@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduVista School Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: rgba(255, 255, 255, 0.08);
+      --muted: rgba(226, 232, 240, 0.75);
+      --accent: #38bdf8;
+      --accent-2: #f472b6;
+      --accent-3: #4ade80;
+      --border: rgba(148, 163, 184, 0.3);
+      --shadow: 0 30px 60px rgba(15, 23, 42, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(244, 114, 182, 0.2), transparent 40%),
+        radial-gradient(circle at 80% 0%, rgba(74, 222, 128, 0.15), transparent 45%),
+        var(--bg);
+      color: #f8fafc;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-mark {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand h1 {
+      font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+      margin-bottom: 4px;
+    }
+
+    .brand p {
+      color: var(--muted);
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      border: 1px solid var(--border);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.35);
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.45);
+      border: 1px solid transparent;
+    }
+
+    .meta-item span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .editable {
+      outline: none;
+      border-bottom: 1px dashed transparent;
+    }
+
+    .editable[contenteditable="true"] {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
+    .media-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .media-toolbar input,
+    .media-toolbar textarea,
+    .media-toolbar select {
+      flex: 1 1 180px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.5);
+      color: #f8fafc;
+    }
+
+    .media-toolbar textarea {
+      min-height: 64px;
+      resize: vertical;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .media-card {
+      display: grid;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.65);
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .media-card img,
+    .media-card iframe {
+      width: 100%;
+      border-radius: 12px;
+      border: none;
+    }
+
+    .media-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .media-card h3 {
+      font-size: 1rem;
+    }
+
+    .media-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="brand-mark">EV</div>
+      <div>
+        <h1 class="editable" contenteditable="true">EduVista High School</h1>
+        <p class="editable" contenteditable="true">Sekolah inovatif dengan fokus pada prestasi akademik & kreativitas siswa.</p>
+      </div>
+    </div>
+    <div class="cta">
+      <button class="btn" id="toggleEdit">Mode Edit</button>
+      <button class="btn primary" id="saveData">Simpan Perubahan</button>
+    </div>
+  </header>
+
+  <main class="grid" style="gap: 32px;">
+    <section class="grid two">
+      <article class="card">
+        <h2>Profil Sekolah</h2>
+        <div class="meta-list">
+          <div class="meta-item">
+            <strong class="editable" contenteditable="true">Akreditasi</strong>
+            <span class="editable" contenteditable="true">A Unggul</span>
+          </div>
+          <div class="meta-item">
+            <strong class="editable" contenteditable="true">Program Unggulan</strong>
+            <span class="editable" contenteditable="true">STEM, Bahasa, Seni</span>
+          </div>
+          <div class="meta-item">
+            <strong class="editable" contenteditable="true">Jumlah Siswa</strong>
+            <span class="editable" contenteditable="true">1.250 Siswa</span>
+          </div>
+          <div class="meta-item">
+            <strong class="editable" contenteditable="true">Lokasi</strong>
+            <span class="editable" contenteditable="true">Jakarta Selatan</span>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <h2>Agenda Minggu Ini</h2>
+        <ul class="meta-list">
+          <li class="meta-item">
+            <strong class="editable" contenteditable="true">Senin</strong>
+            <span class="editable" contenteditable="true">Workshop Robotik</span>
+          </li>
+          <li class="meta-item">
+            <strong class="editable" contenteditable="true">Rabu</strong>
+            <span class="editable" contenteditable="true">Olimpiade Sains</span>
+          </li>
+          <li class="meta-item">
+            <strong class="editable" contenteditable="true">Jumat</strong>
+            <span class="editable" contenteditable="true">Festival Budaya</span>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Kelola Media Sekolah</h2>
+      <div class="media-toolbar">
+        <select id="mediaType">
+          <option value="image">Gambar</option>
+          <option value="news">Berita</option>
+          <option value="video">Video</option>
+        </select>
+        <input type="text" id="mediaTitle" placeholder="Judul" />
+        <input type="text" id="mediaSource" placeholder="URL gambar / video" />
+        <textarea id="mediaDesc" placeholder="Deskripsi singkat"></textarea>
+        <button class="btn primary" id="addMedia">Tambah Media</button>
+      </div>
+      <div class="grid three" id="mediaGrid"></div>
+    </section>
+  </main>
+
+  <footer>
+    Panel informasi sekolah interaktif • Ubah teks langsung dan tambah media dengan mudah.
+  </footer>
+
+  <script>
+    const editableElements = Array.from(document.querySelectorAll(".editable"));
+    const toggleEditButton = document.getElementById("toggleEdit");
+    const saveButton = document.getElementById("saveData");
+    const mediaGrid = document.getElementById("mediaGrid");
+    const mediaType = document.getElementById("mediaType");
+    const mediaTitle = document.getElementById("mediaTitle");
+    const mediaSource = document.getElementById("mediaSource");
+    const mediaDesc = document.getElementById("mediaDesc");
+
+    let isEditMode = true;
+
+    const defaultMedia = [
+      {
+        type: "image",
+        title: "Laboratorium AI",
+        source: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+        desc: "Fasilitas riset terbaru untuk eksperimen siswa."
+      },
+      {
+        type: "news",
+        title: "Juara Nasional Debat",
+        source: "",
+        desc: "Tim debat membawa pulang piala tingkat nasional tahun 2024."
+      },
+      {
+        type: "video",
+        title: "Virtual Campus Tour",
+        source: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        desc: "Jelajahi sekolah lewat tur virtual interaktif."
+      }
+    ];
+
+    const loadData = () => {
+      const savedText = JSON.parse(localStorage.getItem("schoolText"));
+      if (savedText) {
+        editableElements.forEach((el, idx) => {
+          el.textContent = savedText[idx] || el.textContent;
+        });
+      }
+
+      const savedMedia = JSON.parse(localStorage.getItem("schoolMedia"));
+      renderMedia(savedMedia && savedMedia.length ? savedMedia : defaultMedia);
+    };
+
+    const renderMedia = (items) => {
+      mediaGrid.innerHTML = "";
+      items.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "media-card";
+
+        const badge = document.createElement("div");
+        badge.className = "tag";
+        badge.textContent = item.type === "news" ? "Berita" : item.type === "video" ? "Video" : "Gambar";
+
+        const title = document.createElement("h3");
+        title.textContent = item.title;
+
+        const desc = document.createElement("p");
+        desc.textContent = item.desc;
+
+        card.append(badge, title);
+
+        if (item.type === "image") {
+          const img = document.createElement("img");
+          img.src = item.source;
+          img.alt = item.title;
+          card.append(img);
+        }
+
+        if (item.type === "video") {
+          const iframe = document.createElement("iframe");
+          iframe.src = item.source;
+          iframe.title = item.title;
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          card.append(iframe);
+        }
+
+        card.append(desc);
+
+        const removeButton = document.createElement("button");
+        removeButton.className = "btn";
+        removeButton.textContent = "Hapus";
+        removeButton.onclick = () => {
+          const newItems = items.filter((_, i) => i !== index);
+          saveMedia(newItems);
+          renderMedia(newItems);
+        };
+
+        card.append(removeButton);
+        mediaGrid.append(card);
+      });
+    };
+
+    const saveText = () => {
+      const values = editableElements.map((el) => el.textContent.trim());
+      localStorage.setItem("schoolText", JSON.stringify(values));
+    };
+
+    const saveMedia = (items) => {
+      localStorage.setItem("schoolMedia", JSON.stringify(items));
+    };
+
+    const getMediaItems = () => {
+      return JSON.parse(localStorage.getItem("schoolMedia")) || defaultMedia;
+    };
+
+    toggleEditButton.addEventListener("click", () => {
+      isEditMode = !isEditMode;
+      editableElements.forEach((el) => {
+        el.setAttribute("contenteditable", isEditMode);
+      });
+      toggleEditButton.textContent = isEditMode ? "Mode Edit" : "Mode Lihat";
+    });
+
+    saveButton.addEventListener("click", () => {
+      saveText();
+      alert("Perubahan disimpan secara lokal di browser.");
+    });
+
+    document.getElementById("addMedia").addEventListener("click", () => {
+      if (!mediaTitle.value.trim()) {
+        alert("Judul wajib diisi.");
+        return;
+      }
+
+      const newItem = {
+        type: mediaType.value,
+        title: mediaTitle.value.trim(),
+        source: mediaSource.value.trim(),
+        desc: mediaDesc.value.trim() || "Deskripsi belum diisi."
+      };
+
+      const items = [...getMediaItems(), newItem];
+      saveMedia(items);
+      renderMedia(items);
+
+      mediaTitle.value = "";
+      mediaSource.value = "";
+      mediaDesc.value = "";
+    });
+
+    loadData();
+  </script>
+</body>
+</html>
