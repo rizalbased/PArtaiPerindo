@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Studio — SMK Multi Karya</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="brand">
+        <span class="brand-badge">MK</span>
+        <span>Studio Admin</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="#unggah">Unggah</a>
+        <a href="#koleksi">Koleksi</a>
+        <a href="#jadwal">Jadwal Rilis</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge">Admin</span>
+        <button class="button">Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="unggah">
+      <div class="hero-card">
+        <h1>Ruang unggah film siswa.</h1>
+        <p>
+          Admin dapat mengunggah karya film siswa SMK Multi Karya, menambahkan metadata kelas, serta mengatur jadwal
+          rilis agar semua siswa bisa menonton bersamaan.
+        </p>
+        <div class="form-row">
+          <input type="text" placeholder="Judul film" />
+          <input type="text" placeholder="Nama tim produksi" />
+          <select>
+            <option>Kelas XI RPL</option>
+            <option>Kelas XI Multimedia</option>
+            <option>Kelas XII RPL</option>
+            <option>Kelas XII Multimedia</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="date" />
+          <input type="time" />
+          <select>
+            <option>Kategori: Drama</option>
+            <option>Kategori: Dokumenter</option>
+            <option>Kategori: Animasi</option>
+            <option>Kategori: Edukasi</option>
+          </select>
+        </div>
+        <div class="upload-box">
+          <strong>Tarik &amp; letakkan file video di sini</strong>
+          <span>Mendukung MP4, MOV, atau MKV hingga 2GB.</span>
+          <button class="button">Pilih File</button>
+        </div>
+      </div>
+      <div class="banner">
+        <h2>Catatan admin</h2>
+        <p>
+          Pastikan setiap film memiliki poster, sinopsis singkat, dan kredit lengkap untuk membantu siswa membangun
+          portofolio.
+        </p>
+        <div class="card-grid" style="margin-top: 20px;">
+          <div class="card">
+            <span>Checklist</span>
+            <strong>Metadata lengkap</strong>
+            <p>Judul, durasi, kelas, dan tahun produksi.</p>
+            <span class="tag">Wajib</span>
+          </div>
+          <div class="card">
+            <span>Poster</span>
+            <strong>Unggah gambar cover</strong>
+            <p>Gunakan warna yang konsisten dengan film.</p>
+            <span class="tag">Rekomendasi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section" id="koleksi">
+      <div class="section-title">
+        <h3>Koleksi terbaru</h3>
+        <span>Daftar film yang sudah siap tayang</span>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <span>12 menit</span>
+          <strong>Jejak Kreatif XI Multimedia</strong>
+          <p>Dokumenter tentang proses produksi film pendek di lab multimedia.</p>
+          <span class="tag">Siap tayang</span>
+        </div>
+        <div class="card">
+          <span>18 menit</span>
+          <strong>Legenda Kampus Kita</strong>
+          <p>Drama kampus dengan konsep sinematik dan scoring mandiri.</p>
+          <span class="tag">Siap tayang</span>
+        </div>
+        <div class="card">
+          <span>9 menit</span>
+          <strong>Animasi: The Dream Lab</strong>
+          <p>Eksperimen animasi 2D dengan tema masa depan sekolah.</p>
+          <span class="tag">Perlu revisi</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section" id="jadwal">
+      <div class="section-title">
+        <h3>Jadwal rilis minggu ini</h3>
+        <span>Atur tanggal tayang agar semua siswa siap</span>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <span>Senin, 10:00 WIB</span>
+          <strong>Short Film: Hari Pertama PKL</strong>
+          <p>Publikasi untuk seluruh siswa kelas XI.</p>
+          <span class="badge">Tayang premier</span>
+        </div>
+        <div class="card">
+          <span>Rabu, 14:00 WIB</span>
+          <strong>Workshop Visual Effects</strong>
+          <p>Rekaman kelas online untuk siswa multimedia.</p>
+          <span class="badge">Tayang ulang</span>
+        </div>
+        <div class="card">
+          <span>Jumat, 19:00 WIB</span>
+          <strong>Malam Apresiasi Alumni</strong>
+          <p>Streaming khusus dengan komentar alumni.</p>
+          <span class="badge">Live</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Admin Studio SMK Multi Karya — kelola rilis video siswa dengan aman.</p>
+  </footer>
+</body>
+</html>
